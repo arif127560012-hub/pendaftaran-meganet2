@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pendaftaran WiFi meganet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      background: #25D366;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #1ebc57;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="wifiForm">
+    <h2>silahkan isi form pendaftaran wifi mega.net berikut</h2>
+    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+	<input type="text" id="paket" placeholder="paket" required>
+    <input type="text" id="alamat" placeholder="Alamat" required>
+    <input type="text" id="nohp" placeholder="Nomor HP" required>
+	<input type="text" id="tanggal kamu daftar" placeholder="tanggal kamu daftar" required>
+	<input type="text" id="nama wifi kamu " placeholder="Nama wifi kamu" required>
+	<input type="text" id="password wifi kamu" placeholder="password wifi kamu" required>
+    <textarea id="catatan" placeholder="Catatan tambahan (opsional)"></textarea>
+    <button type="submit">Kirim ke WhatsApp</button>
+  </form>
+
+  <script>
+    document.getElementById("wifiForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // ambil nilai input
+      const nama = document.getElementById("nama").value;
+      const alamat = document.getElementById("alamat").value;
+      const nohp = document.getElementById("nohp").value;
+      const catatan = document.getElementById("catatan").value;
+
+      // nomor WA admin (ganti dengan nomor kamu, format internasional tanpa +)
+      const admin = "6282134144697";
+
+      // format pesan
+      const pesan = `Halo Admin, saya ingin daftar WiFi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A📞 No HP: ${nohp}%0A📝 Catatan: ${catatan}`;
+
+      // buat link WA
+      const url = `https://wa.me/${admin}?text=${pesan}`;
+
+      // buka WhatsApp
+      window.open(url, "_blank");
+    });
+  </script>
+
+</body>
+</html>
